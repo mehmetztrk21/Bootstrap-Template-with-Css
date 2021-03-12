@@ -1,0 +1,366 @@
+* {
+	padding: 0;
+	margin: 0;            /*her zaman bunu yap*/
+	box-sizing: border-box;
+}
+
+html {             /*başka cihazlara da uyumlu olması için html font yapıp sadece burdan değiştireceğiz.*/
+	font-size: 10px;
+}
+
+body {
+	font-family: 'Lato', sans-serif;
+	font-size: 1.6rem;     /*html nin yüzde 16 sı yani 16 piksel*/
+	font-weight: 400;
+	line-height: 1.5;
+	background-color: #fff;
+}
+
+
+h1,h2,h3,h4,h5{
+	font-weight: 700;
+	font-family: Montserrat;
+
+}
+
+
+a {
+	text-decoration: none;  /*linklerin alt çizgisini kaldırdık.*/
+}
+
+ul {
+	list-style-type: none;
+}
+
+section{
+	padding-top: 10rem;
+	padding-bottom: 10rem;
+	text-align: center;
+
+}
+
+.img-fluid {
+	max-width: 100%;
+	height: auto;
+}
+
+.clearfix::after {  /*navbar görüntüsünün düzelmesi için*/
+	content: "";
+	display: block;
+	clear: both;
+}
+
+.container {  /*sayfanın tüm içerikleri ile ilgili*/
+	width: 1140px;
+	margin-left: auto;
+	margin-right: auto;   /*bütün içeriklerin margin ve padding değerleri*/
+	padding-left: .5rem;
+	padding-right: .5rem;
+}
+
+.text-uppercase {
+	text-transform: uppercase;
+}
+
+/*navbar*/
+
+nav {
+	width: 100%;  /*satırı olduğu gibi kaplasın*/
+	font-family: Montserrat;
+	background-color: #2C3E50;
+	color: #fff;
+	padding-top: 2.4rem;     /*içeriklere padding vererek navbarın yüksekliğini ayarladık*/
+	padding-bottom: 2.4rem;
+	position: fixed;  /*aşağı indiğimizde bile navbar üstte kalsın*/
+	z-index: 500;  /* z inksi navbara en fazla verdik gibi en üstte her zaman o bulunsun.*/
+}
+
+#logo-box {
+	float: left;      /*logo yu sola yasla*/
+	padding-top: .5rem;
+}
+
+#logo-box .logo {
+	color: #fff;
+	font-weight: 700;     /*start bootstrap yazısı*/
+	font-size: 3.2rem;
+}
+
+#nav-links {
+	float: right;   /*diğer linkleri de sağa yasla*/
+}
+
+#nav-links .nav-item {
+	float: left;  /*liste elemanlarını sola yasla*/
+	margin: .4rem;
+}
+
+#nav-links .nav-link {
+	color: #fff;
+	font-size: 1.6rem;
+	font-weight: 700;
+	display: block;   /*badding değerleri işe yarasın diye*/
+	padding: 1.6rem;
+	letter-spacing: .1rem;  /*harf aralıkları*/
+	transition: color .3s;   /*hoverdeki renk değişimi 3 saniyede olsun*/
+}
+
+#nav-links .nav-link:hover {  /*üstüne geldiğimizde rengi değişsin*/
+	color: #18bc9c;
+}
+
+
+header{
+	background-color: #08AA9B;
+	padding-top:calc(112px + 10rem);  /*navbarın aşağısından başlasın */
+	padding-bottom: 112px;
+	text-align: center;
+}
+
+header h1{
+	color:#fff;
+	font-size:7.6rem;
+
+}
+header h2{
+	color:#fff;
+	font-size: 2.8rem;
+	font-family: "Lato";
+	font-weight: 300;
+}
+hr.star-light{
+border-color: #fff;
+}
+
+hr.star-dark{
+	border-color:#2C3E50;
+}
+
+.star-light , .star-dark{
+	border: none;   /*sadece borderin üstü görünmesi için öcve borderi sildik sonra sadece üstünü tanımladık */
+	border-top: .4rem solid white;
+	max-width: 25rem;
+	margin: 2.5rem auto; /*üstten altan 2.5 sağdan soldan kendisi ortalayacak.*/
+	overflow: visible;  /*böyle yapınca altındaki yıldız üste çıktı*/
+	height: 0;  /*sadece borde alanı görünmesi bizim için yeterli*/
+}
+
+.star-light::after{
+	color:white;
+	background-color: #08AA9B;
+
+}
+.star-dark::after{
+	color:#2C3E50;
+	background-color: #fff;
+
+
+}
+
+.star-light::after, .star-dark::after {
+	content: "\f005";   /*ikon kodu*/
+	font-family: "Font Awesome 5 Free";
+	font-weight: 900;
+	font-size: 3.2rem;
+	position: relative;
+	padding: 0 8px;
+	top: -26px;
+
+}
+
+
+/*portfolio */
+
+
+#portfolio h2{
+	font-size: 4.8rem;
+	color:#2C3E50;
+}
+
+.col{
+	float: left;  /*tüm resimleri sola doğru yasla*/
+	width: 33.333%;  /*her satırda 3 tane resim*/
+	padding:10px;  /*en başta box-sizin yaptığımız için verdiğimiz padding değeri ekstradan bir yer kaplamıyor.*/
+}
+.portfolio-item{
+	height: 300px;
+	position: relative;
+}
+
+.portfolio-item img{
+	display: block;
+}
+
+.img-overlay{
+	position: absolute;
+	top: 0;
+	left:0;
+	height: 100%;
+	width: 100%;
+	background-color: #08AA9B;
+	opacity:0;  /*görünmesin*/
+	transition: opacity .5s ease;
+}
+
+.img-overlay .icon{
+	color:#fff;
+	font-size: 2rem;
+	position: absolute;
+	top:50%;
+	left: 50%;
+	transform: translate(-50%, -50%); /*böyle yapınca tam ortaya geliyor ikon*/
+}
+
+.portfolio-item:hover
+	.img-overlay{
+		opacity: 1;  /*görünsün*/
+	}
+
+#about{
+		padding-top: 10rem;
+		padding-bottom: 10rem;
+		text-align: center;
+		background-color: #08AA9B;
+	}
+
+#about h2{
+	color:#fff;
+	background-color: #08AA9B;
+	font-size: 4.8rem;
+}
+
+.about-text .left{
+	float: left;
+	width: 50%;
+	padding-right: 2rem;
+	padding-left: 23rem;
+}
+.about-text .right{
+	float: right;
+	width: 50%;
+	padding-left: 2rem;
+	padding-right: 23rem;
+	
+}
+
+.about-text .text{
+	font-size: 2rem;
+	color:#fff;
+	text-align: left;
+}
+
+
+
+
+.btn-large {
+	font-size: 2rem;		
+	padding: 2.2rem 1.6rem;
+}
+
+.btn {
+	margin-top:4rem; 	
+	font-weight: 400;
+	display: inline-block;
+	border:2px solid transparent;
+	border-radius: .4rem;
+	cursor: pointer;
+	transition: all .5s;
+}
+
+.btn-social {
+	width: 5rem;
+	height: 5rem;
+	border-radius: 50%;
+	font-size: 2rem;
+	line-height: 2rem;
+}
+
+.btn-outline {	
+	color:#fff;
+	border-color: #fff;	
+	background-color: transparent;
+}
+
+.btn-outline:hover {
+	color: #212529;
+	background-color: #fff;	
+}
+
+.btn-primary {
+	background-color: #18BC9C;
+	border-color: #18BC9C;
+	color: #fff;
+	padding: 1.2rem 1rem;
+}
+
+.btn-primary:hover {
+	background-color: #128f76;
+	border-color: #128f76;
+}
+
+
+
+/*Contact*/
+
+
+
+#contact h2{
+	font-size: 4.8rem;
+	color:#2C3E50;
+}
+
+
+#contact-form{
+	width: 70%;
+	margin:0 auto;
+}
+
+
+.form-group{
+	border-bottom: 1px solid #e9ecef;
+	padding-bottom: 2rem;
+	margin-bottom: 4rem;
+}
+
+.form-group input , .form-group textarea{
+	border: none;
+	width: 100%;
+	display: block;  /*genişliği değiştirebilmek için*/
+	font-size: 2.4rem;
+}
+.form-group input:focus , .form-group textarea:focus{
+	outline: 0;   /*basınca knarlıklar görünmesin.*/
+}
+
+/*footer*/
+
+footer{
+	padding-bottom: 6rem;
+	padding-top: 6rem;
+	background-color: #2C3E50;
+	color:#fff;
+	text-align: center;
+}
+
+footer h4{
+	font-size: 2.4rem;
+}
+
+footer p{
+	font-size: 2rem;
+	margin-top:1rem;
+}
+
+footer li{
+	display: inline-block;
+	margin-right: 1rem;
+}
+
+.copyright{
+	background-color:#1a252f ;
+	padding-top: 2.4rem;
+	padding-bottom: 2.4rem;
+	color:#fff;
+	text-align: center;
+}
+
